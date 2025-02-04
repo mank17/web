@@ -1,29 +1,11 @@
 <!DOCTYPE html>
+
 <html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Fetch Data from Google Apps Script</title>
-</head>
-<body>
-    <div id="content">Loading...</div>
-
-    <script>
-        // URL ของ Google Apps Script
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbyLVFv-RLVeVYxqGFSPYUNf6zXmAkXFtAmUksqEPJZ4bVipE6EY-rv9rRY2q_XJvVYFMg/exec';
-
-        // ใช้โพรซีเซิร์ฟเวอร์เพื่อดึงข้อมูล
-        const proxyUrl = 'https://your-proxy-server.com/'; // แทนที่ด้วย URL ของโพรซีเซิร์ฟเวอร์ของคุณ
-
-        fetch(proxyUrl + encodeURIComponent(scriptURL))
-            .then(response => response.json())
-            .then(data => {
-                console.log('Data received:', data);
-                document.getElementById('content').innerText = JSON.stringify(data, null, 2);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                document.getElementById('content').innerText = 'Error loading data';
-            });
-    </script>
-</body>
+   <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+      <base target="_top">
+   </head>
+   <body>
+      <iframe style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;border: 0;" src="https://script.google.com/macros/s/AKfycbx77SNZox_JyvcB16kvdwnbVb0i0IbkXTa9aXlaMsJd8vA99ZLzelGwAJIPaZXIqoCL/exec"></iframe>
+   </body>
 </html>
