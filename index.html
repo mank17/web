@@ -11,17 +11,12 @@
         // URL ของ Google Apps Script
         const scriptURL = 'https://script.google.com/macros/s/AKfycbyLVFv-RLVeVYxqGFSPYUNf6zXmAkXFtAmUksqEPJZ4bVipE6EY-rv9rRY2q_XJvVYFMg/exec';
 
-        // ใช้ Fetch API เพื่อดึงข้อมูลจาก Google Apps Script
-        fetch(scriptURL)
-            .then(response => {
-                console.log('Response status:', response.status);
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
+        // ใช้โพรซีเซิร์ฟเวอร์เพื่อดึงข้อมูล
+        const proxyUrl = 'https://your-proxy-server.com/'; // แทนที่ด้วย URL ของโพรซีเซิร์ฟเวอร์ของคุณ
+
+        fetch(proxyUrl + encodeURIComponent(scriptURL))
+            .then(response => response.json())
             .then(data => {
-                // แสดงข้อมูลใน div ที่มี id="content"
                 console.log('Data received:', data);
                 document.getElementById('content').innerText = JSON.stringify(data, null, 2);
             })
