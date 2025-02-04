@@ -1,18 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Fetch Data from Google Apps Script</title>
 </head>
 <body>
-    <div id="content"></div>
+    <div id="content">Loading...</div>
 
     <script>
-        fetch('https://script.google.com/macros/s/AKfycbyLVFv-RLVeVYxqGFSPYUNf6zXmAkXFtAmUksqEPJZ4bVipE6EY-rv9rRY2q_XJvVYFMg/exec')
+        // URL ของ Google Apps Script
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyLVFv-RLVeVYxqGFSPYUNf6zXmAkXFtAmUksqEPJZ4bVipE6EY-rv9rRY2q_XJvVYFMg/exec';
+        
+        // ใช้ Fetch API เพื่อดึงข้อมูลจาก Google Apps Script
+        fetch(scriptURL)
             .then(response => response.json())
             .then(data => {
-                document.getElementById('content').innerText = JSON.stringify(data);
+                // แสดงข้อมูลใน div ที่มี id="content"
+                document.getElementById('content').innerText = JSON.stringify(data, null, 2);
             })
-            .catch(error => console.error('Error:', error));
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('content').innerText = 'Error loading data';
+            });
     </script>
 </body>
 </html>
